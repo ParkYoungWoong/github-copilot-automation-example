@@ -1,0 +1,12 @@
+Issue key,Issue Type,Summary,Status,Priority,Assignee,Reporter,Created,Updated
+TS-101,Epic,TS-100 2차 환경 시험,In Progress,Medium,박OO,박OO,2026-10-01 09:00,2026-10-27 17:20
+TS-102,Task,환경 챔버 시험 일정 확정,Done,Medium,박OO,박OO,2026-10-14 10:00,2026-10-27 09:40
+TS-103,Bug,펌웨어 2.3.1에서 센서 값이 0으로 고정됨,Done,High,김OO,김OO,2026-09-01 11:00,2026-10-28 15:10
+TS-104,Task,저온 시험 지그 교체,In Progress,Medium,최OO,최OO,2026-10-20 13:00,2026-10-29 11:30
+TS-105,Story,시험 결과 보고서 자동 생성,In Progress,Medium,이OO,박OO,2026-10-21 09:30,2026-10-30 16:00
+TS-106,Bug,UART 통신 중 응답 없음,To Do,High,김OO,최OO,2026-10-23 14:00,2026-10-26 10:15
+TS-107,Task,고전압 동작 시험(TC-06) 재실시,To Do,Medium,최OO,박OO,2026-10-30 10:00,2026-10-30 10:00
+TS-108,Bug,[TC-04] 장시간 연속 측정 기록 끊김 (46초),In Progress,High,김OO,최OO,2026-10-30 13:00,2026-10-30 17:40
+TS-109,Task,캘리브레이션 절차 문서 갱신,Done,Low,박OO,박OO,2026-10-15 09:00,2026-10-24 18:00
+TS-110,Story,시험 결과 위키 페이지 템플릿,To Do,Low,이OO,이OO,2026-10-16 09:00,2026-10-22 09:00
+TS-111,Bug,보고서 출력에 부서명 누락,Done,Low,이OO,이OO,2026-10-27 09:00,2026-10-29 14:20

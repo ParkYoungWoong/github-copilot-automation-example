@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "jira": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mock-jira/server.js"],
+      "tools": ["*"]
+    }
+  }
+}
