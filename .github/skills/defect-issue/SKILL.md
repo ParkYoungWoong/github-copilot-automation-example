@@ -8,8 +8,8 @@ disable-model-invocation: true
 # 결함 이슈 등록
 
 1. `output/tc-result.md`에서 대상 TC가 Fail인지 확인합니다. Fail이 아니면 등록하지 않고 이유를 알립니다.
-1. `jira_search`로 같은 TC의 열린 이슈가 있는지 찾습니다. JQL 예: `project = TS AND summary ~ "TC-03" AND status != Done`
-1. 열린 이슈가 있으면 새로 만들지 않고 그 이슈 키를 알려 줍니다.
+1. `jira_search`로 같은 TC의 열린 이슈가 있는지 찾습니다. JQL 예: `project = TS AND summary ~ "TC-03" AND statusCategory != Done`
+1. 검색 결과 중 요약이 같은 `[TC 번호]`로 시작하는 이슈가 있으면 새로 만들지 않고 그 이슈 키를 알려 줍니다. `~`는 비슷한 글자도 찾으므로 번호가 정확히 같은지 확인합니다.
 1. 없으면 아래 형식으로 이슈 초안을 채팅에 보여 주고, 등록해도 되는지 묻습니다.
 1. 승인을 받으면 `jira_create_issue`로 등록하고 만들어진 이슈 키를 알려 줍니다.
 
@@ -34,5 +34,5 @@ disable-model-invocation: true
 
 jira 도구가 없으면 `data/jira-export.csv`(Jira에서 내보낸 이슈 목록)를 대신 사용합니다.
 
-- 열린 이슈는 `Summary`에 TC 번호가 들어 있고 `Status`가 Done이 아닌 행으로 찾습니다.
+- 열린 이슈는 `Summary`가 같은 `[TC 번호]`로 시작하고 `Status`가 Done이 아닌 행으로 찾습니다.
 - 이슈를 등록할 수 없으므로 승인을 묻지 않고, 초안을 `output/defect-draft.md`에 저장한 뒤 Jira에 직접 등록하라고 안내합니다.

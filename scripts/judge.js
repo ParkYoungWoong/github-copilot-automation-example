@@ -53,10 +53,12 @@ function mapColumns(rows) {
     if (key) found[name] = key
   }
   const missing = REQUIRED.filter(name => !found[name])
+  // 빈 칸은 Number('')가 0이 되므로 NaN으로 바꿔서 값 오류로 잡습니다.
+  const toNumber = value => (value === '' || value === undefined ? NaN : Number(value))
   const samples = rows.map(row => ({
-    time: Number(row[found.time]),
-    ref: Number(row[found.ref]),
-    sensor: Number(row[found.sensor])
+    time: toNumber(row[found.time]),
+    ref: toNumber(row[found.ref]),
+    sensor: toNumber(row[found.sensor])
   }))
   return { samples, missing }
 }
@@ -107,6 +109,11 @@ export function judge(tc, logDir = LOG_DIR) {
   if (missing.length) {
     return { ...result, 비고: '열 누락', 근거: `필수 열 없음: ${missing.join(', ')}` }
   }
+  const invalid = samples.findIndex(s => ![s.time, s.ref, s.sensor].every(Number.isFinite))
+  if (invalid >= 0) {
+    // 머리글이 1번째 줄이므로 데이터 행 번호에 2를 더합니다.
+    return { ...result, 비고: '값 오류', 근거: `${fmt(invalid + 2)}번째 줄에 비어 있거나 숫자가 아닌 값이 있습니다` }
+  }
 
   const settled = samples.filter(s => s.time >= SETTLE_SECONDS)
   result.샘플수 = settled.length
@@ -119,8 +126,13 @@ export function judge(tc, logDir = LOG_DIR) {
   for (const s of settled) {
     if (Math.abs(s.sensor - s.ref) > Math.abs(worst.sensor - worst.ref)) worst = s
   }
-  result.최대오차 = Number(Math.abs(worst.sensor - worst.ref).toFixed(2))
+  // 판정은 반올림 전의 값으로 하고, 표에는 소수 둘째 자리까지 표시합니다.
+  // 1e-9는 25.2 - 24.7 같은 계산에서 생기는 부동소수점 오차를 넘지 않게 하는 여유입니다.
+  const worstError = Math.abs(worst.sensor - worst.ref)
+  result.최대오차 = Number(worstError.toFixed(2))
   result.최대오차시각 = worst.time
+  // 근거에는 셋째 자리까지 적어서 0.504처럼 허용값을 살짝 넘은 값도 드러나게 합니다.
+  const shown = Number(worstError.toFixed(3))
 
   const notes = []
   const reasons = []
@@ -129,11 +141,11 @@ export function judge(tc, logDir = LOG_DIR) {
     notes.push('기록 끊김')
     reasons.push(`${fmt(gap.from)}초와 ${fmt(gap.to)}초 사이 ${gap.seconds}초 동안 기록 없음`)
   }
-  if (result.최대오차 > tolerance) {
+  if (worstError > tolerance + 1e-9) {
     notes.push('오차 초과')
-    reasons.push(`최대 오차 ${result.최대오차}도(${fmt(worst.time)}초) > 허용 ${tolerance.toFixed(1)}도`)
+    reasons.push(`최대 오차 ${shown}도(${fmt(worst.time)}초) > 허용 ${tolerance.toFixed(1)}도`)
   } else {
-    reasons.push(`최대 오차 ${result.최대오차}도 <= 허용 ${tolerance.toFixed(1)}도`)
+    reasons.push(`최대 오차 ${shown}도 <= 허용 ${tolerance.toFixed(1)}도`)
   }
 
   return {
