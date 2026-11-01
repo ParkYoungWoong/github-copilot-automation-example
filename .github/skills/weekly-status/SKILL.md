@@ -7,7 +7,7 @@ argument-hint: 기간 (예 2026-10-26부터 2026-10-30까지)
 # 주간 이슈 현황
 
 1. 기간이 없으면 시작일과 종료일을 물어봅니다.
-1. `jira_search`로 기간 안에 갱신된 이슈를 찾습니다. JQL 예: `project = TS AND updated >= "2026-10-26" AND updated <= "2026-10-30" ORDER BY updated DESC`
+1. `jira_search`로 기간 안에 갱신된 이슈를 찾습니다. JQL 예: `project = TS AND updated >= "2026-10-26 00:00" AND updated <= "2026-10-30 23:59" ORDER BY updated DESC`
 1. 상태별로 묶어서 아래 형식으로 `output/weekly-status.md`에 저장합니다.
 
 ## 형식
