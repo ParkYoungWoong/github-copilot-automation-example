@@ -26,6 +26,8 @@ docs/
   test-rules.md               판정 규칙
   task-worksheet.md           업무 분해 시트
   summary-template.md         자동화를 마친 뒤 팀에 넘길 정리 문서 양식
+extras/
+  verify-gate/                검증셋을 통과해야 이슈와 페이지를 만들 수 있게 하는 Hook (심화)
 mock-jira/
   server.js                   연습용 Jira, Confluence MCP 서버
   seed.json                   처음 이슈 목록
@@ -72,6 +74,15 @@ node scripts/check.js
 | `requirements.csv`, `verification-tests.csv` | 검증되지 않은 요구사항 찾기 | 승인되지 않은 요구사항, 요구사항이 바뀌기 전의 합격, 섞인 ID 표기, 없는 요구사항을 가리키는 시험 |
 
 지시문 연습은 저장소의 지침이 섞이지 않도록 `practice` 폴더만 VS Code로 열어서 진행합니다.
+
+## 검증 Hook (심화)
+
+`extras/verify-gate` 폴더의 두 파일을 `.github/hooks` 폴더로 복사하면, Copilot이 `jira_create_issue`나 `confluence_create_page`를 호출하기 직전에 `node scripts/check.js`를 실행하고 하나라도 어긋나면 그 호출을 거부합니다.
+
+## GitHub에서 실행 (심화)
+
+저장소 페이지의 `Use this template`으로 비공개 저장소를 만들면 클라우드 자동화와 클라우드 에이전트를 사용할 수 있습니다.
+방법은 글의 '클라우드에서 실행'에 있습니다.
 
 ## 연습용 Jira와 Confluence
 

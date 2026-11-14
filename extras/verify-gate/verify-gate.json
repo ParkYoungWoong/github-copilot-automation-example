@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      { "type": "command", "command": "node .github/hooks/verify-gate.js", "timeoutSec": 30 }
+    ]
+  }
+}
