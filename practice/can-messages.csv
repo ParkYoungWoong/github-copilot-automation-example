@@ -1,0 +1,10 @@
+﻿ID,메시지,설명,주기(ms),보내는 제어기
+0x130,WheelSpeed,바퀴 속도,10,제동 제어기
+0x1A0,BrakePressure,브레이크 압력,20,제동 제어기
+0x1B8,VehicleSpeed,차량 속도,20,차체 제어기
+0x1F0,RadarTarget,레이더 감지 대상,50,전방 레이더
+0x2A0,LampStatus,램프 상태,100,램프 제어기
+0x2A8,LampCommand,램프 점등 명령,100,차체 제어기
+0x3E0,OutsideTemp,외기 온도,1000,차체 제어기
+0x4C0,RadarStatus,레이더 상태,100,전방 레이더
+0x7E8,DiagResponse,진단 응답,0,제동 제어기
