@@ -5,6 +5,12 @@
       "command": "node",
       "args": ["mock-jira/server.js"],
       "tools": ["*"]
+    },
+    "ts100": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp-ts100/server.js"],
+      "tools": ["*"]
     }
   }
 }
