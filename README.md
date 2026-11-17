@@ -85,7 +85,8 @@ node scripts/check.js
 | `can-log.asc`, `can-messages.csv` | 통신이 끊긴 구간 찾기 | 두 채널, 제어기가 켜지는 처음 2초, 주기 없는 메시지, 끝까지 오지 않는 메시지 |
 | `requirements.csv`, `verification-tests.csv` | 검증되지 않은 요구사항 찾기 | 승인되지 않은 요구사항, 요구사항이 바뀌기 전의 합격, 섞인 ID 표기, 없는 요구사항을 가리키는 시험 |
 
-지시문 연습은 저장소의 지침이 섞이지 않도록 `practice` 폴더만 VS Code로 열어서 진행합니다.
+지시문 연습은 저장소의 지침이 섞이지 않도록 `practice` 폴더를 저장소 밖(바탕 화면 등)에 복사해서 그 폴더를 VS Code로 열고 진행합니다.
+저장소 안의 `practice` 폴더만 열어도 Copilot이 상위 폴더인 이 저장소의 지침을 함께 읽기 때문입니다.
 
 ## 검증 Hook (심화)
 
