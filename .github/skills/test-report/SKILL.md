@@ -12,7 +12,7 @@ disable-model-invocation: true
 1. `node scripts/check.js`를 실행합니다. 불일치가 있으면 보고서를 만들지 말고, 어긋난 TC와 확인 항목만 알린 뒤 멈춥니다.
 1. `node scripts/judge.js`를 실행합니다.
 1. `node scripts/report.js`를 실행합니다.
-1. `output/tc-result.md`를 읽고 아래 형식으로 `output/test-summary.md`를 작성합니다.
+1. `output/tc-result.md`를 읽고 아래 형식으로 `output/test-summary.md`를 새로 작성합니다. 파일이 이미 있어도 이번 결과로 덮어씁니다.
 1. 마지막에 `output/test-report.html`을 열어 그래프를 확인하라고 안내합니다.
 
 ## 요약 형식

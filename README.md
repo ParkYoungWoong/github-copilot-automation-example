@@ -6,6 +6,15 @@ GitHub Copilot으로 시험 로그 판정, 보고서 작성, Jira 결함 등록�
 - 필요한 것: VS Code, GitHub Copilot, Node.js 22 이상
 - 외부 패키지를 설치하지 않습니다. 모든 스크립트는 Node.js 내장 모듈만 사용합니다.
 
+## 브랜치
+
+| 브랜치 | 내용 |
+| --- | --- |
+| `main` | 실습을 시작하는 상태. 글에서 Copilot에게 만들게 하는 판정, 보고 스크립트와 결과물은 들어 있지 않습니다 |
+| `complete` | 글의 실습을 끝까지 따라 한 완성본. 만든 스크립트와 비교하거나, 실습이 막혔을 때 받아서 이어 갑니다 |
+
+`Code > Download ZIP`은 `main`을 받습니다. 완성본은 브랜치 메뉴에서 `complete`를 고른 뒤 같은 방법으로 받습니다.
+
 ## 구조
 
 ```plaintext
@@ -39,13 +48,16 @@ practice/
   requirements.csv            요구사항 목록 90개
   verification-tests.csv      요구사항을 검증하는 시험 목록 118건
 scripts/
-  judge.js                    로그 판정 -> output/tc-result.*
-  report.js                   그래프 보고서 -> output/test-report.html
   check.js                    검증셋 비교 -> 일치, 오탐, 미탐
+  judge.js                    로그 판정 -> output/tc-result.* (실습에서 만듦, complete 브랜치에 완성본)
+  report.js                   그래프 보고서 -> output/test-report.html (실습에서 만듦, complete 브랜치에 완성본)
 tests/cases.json              검증셋
+output/                       결과물을 저장하는 폴더
 ```
 
 ## 직접 실행
+
+판정, 보고 스크립트를 만든 뒤(또는 `complete` 브랜치에서) 실행합니다.
 
 ```bash
 node scripts/judge.js
@@ -82,6 +94,7 @@ node scripts/check.js
 ## GitHub에서 실행 (심화)
 
 저장소 페이지의 `Use this template`으로 비공개 저장소를 만들면 클라우드 자동화와 클라우드 에이전트를 사용할 수 있습니다.
+클라우드에서는 완성된 판정 스크립트가 필요하므로, 만들 때 `Include all branches`를 체크하고 만든 저장소의 기본 브랜치를 `complete`로 바꿉니다.
 방법은 글의 '클라우드에서 실행'에 있습니다.
 
 ## 연습용 Jira와 Confluence
